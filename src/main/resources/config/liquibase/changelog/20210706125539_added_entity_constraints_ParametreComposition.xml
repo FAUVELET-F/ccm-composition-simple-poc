@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity ParametreComposition.
+    -->
+    <changeSet id="20210706125539-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="template_id"
+                                 baseTableName="parametre_composition"
+                                 constraintName="fk_parametre_composition__template_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="template"/>
+
+        <addForeignKeyConstraint baseColumnNames="parametre_composition_id"
+                                 baseTableName="parametre_composition"
+                                 constraintName="fk_parametre_composition__parametre_composition_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parametre_composition"/>
+    </changeSet>
+</databaseChangeLog>
