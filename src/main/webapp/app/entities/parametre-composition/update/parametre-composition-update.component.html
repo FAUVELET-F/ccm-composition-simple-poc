@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-parametre-composition-heading" data-cy="ParametreCompositionCreateUpdateHeading">
+        Create or edit a Parametre Composition
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_nomBaliseXml">Nom Balise Xml</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomBaliseXml"
+            id="field_nomBaliseXml"
+            data-cy="nomBaliseXml"
+            formControlName="nomBaliseXml"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_libelle">Libelle</label>
+          <input type="text" class="form-control" name="libelle" id="field_libelle" data-cy="libelle" formControlName="libelle" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null"></option>
+            <option value="STRING">STRING</option>
+            <option value="BOOLEAN">BOOLEAN</option>
+            <option value="LIST">LIST</option>
+            <option value="OBJECT">OBJECT</option>
+            <option value="NUMBER">NUMBER</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_parametreComposition">Parametre Composition</label>
+          <select
+            class="form-control"
+            id="field_parametreComposition"
+            data-cy="parametreComposition"
+            name="parametreComposition"
+            formControlName="parametreComposition"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                parametreCompositionOption.id === editForm.get('parametreComposition')!.value?.id
+                  ? editForm.get('parametreComposition')!.value
+                  : parametreCompositionOption
+              "
+              *ngFor="let parametreCompositionOption of parametreCompositionsSharedCollection; trackBy: trackParametreCompositionById"
+            >
+              {{ parametreCompositionOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

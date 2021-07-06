@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="parametreComposition">
+      <h2 data-cy="parametreCompositionDetailsHeading"><span>Parametre Composition</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ parametreComposition.id }}</span>
+        </dd>
+        <dt><span>Nom Balise Xml</span></dt>
+        <dd>
+          <span>{{ parametreComposition.nomBaliseXml }}</span>
+        </dd>
+        <dt><span>Libelle</span></dt>
+        <dd>
+          <span>{{ parametreComposition.libelle }}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+          <span>{{ parametreComposition.type }}</span>
+        </dd>
+        <dt><span>Parametre Composition</span></dt>
+        <dd>
+          <div *ngIf="parametreComposition.parametreComposition">
+            <a [routerLink]="['/parametre-composition', parametreComposition.parametreComposition?.id, 'view']">{{
+              parametreComposition.parametreComposition?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/parametre-composition', parametreComposition.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
