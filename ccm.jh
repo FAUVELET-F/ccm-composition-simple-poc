@@ -1,0 +1,28 @@
+
+entity ParametreComposition {
+	nomBaliseXml String,
+    libelle String,
+    type ParametreCompositionType
+}
+
+entity Template {
+	nom String
+}
+
+enum ParametreCompositionType {
+    STRING, BOOLEAN, LIST, OBJECT, NUMBER
+}
+
+
+relationship ManyToOne {
+	Template{template} to ParametreComposition
+}
+relationship OneToMany {
+	ParametreComposition{childParams} to ParametreComposition
+}
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
