@@ -1,0 +1,42 @@
+{
+  "name": "ParametreComposition",
+  "fields": [
+    {
+      "fieldName": "nomBaliseXml",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "ParametreCompositionType",
+      "fieldValues": "STRING,BOOLEAN,LIST,OBJECT,NUMBER"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "parametreComposition",
+      "otherEntityRelationshipName": "parametreComposition",
+      "relationshipName": "childParams"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "parametreComposition",
+      "otherEntityRelationshipName": "childParams",
+      "relationshipName": "parametreComposition"
+    }
+  ],
+  "entityTableName": "parametre_composition",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210706094509"
+}
